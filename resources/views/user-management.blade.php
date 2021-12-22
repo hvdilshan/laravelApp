@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>User</h1>
+        <h1>User Management</h1>
     </dev>
 </body>
 </html>
