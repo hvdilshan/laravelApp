@@ -12,16 +12,20 @@
 
 <body>
 
-    <div class="container">
+<div class="container">
         <div class="text-center">
             <h1>Update User</h1>
             <div class="row">
-                <div class="col-md-12">
-                    @foreach($errors->all() as $error)
-                    <div class="alert alert-danger" role="alert">
-                        {{$error}}
-                    </div>
-                    @endforeach
+                <div class="">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-3"></div>
+                            <div class="col-6">
+                                @foreach($errors->all() as $error)
+                                <div class="alert alert-danger" role="alert">
+                                    {{$error}}
+                                </div>
+                                @endforeach
                     <form action="/updateUser" method="post">
                         {{csrf_field()}}
                         <div class="mb-3">

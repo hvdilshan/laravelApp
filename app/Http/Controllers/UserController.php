@@ -67,7 +67,7 @@ class UserController extends Controller
 
         $data->save();
         $user=User::all();
-        return view('index')->with('users', $user);
+        return redirect('/')->with('users', $user);
 
     }
 }
