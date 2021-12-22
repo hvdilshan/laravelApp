@@ -10,7 +10,7 @@ class UserController extends Controller
     public function AddUser(Request $request)
     {
 
-        $user = new User;
+        $data = new User;
 
         $this->validate($request, [
             'name' => 'required|max:150|min:5',
@@ -19,20 +19,55 @@ class UserController extends Controller
 
         ]);
 
-        $user->name = $request->name;
-        $user->address = $request->address;
-        $user->gender = $request->gender;
-        $user->position = $request->position;
-        $user->save();
+        $data->name = $request->name;
+        $data->address = $request->address;
+        $data->gender = $request->gender;
+        $data->position = $request->position;
+        $data->save();
 
-        $data = User::all();
-        return redirect()->back()->with('users', $data);
+        $user = User::all();
+        return redirect()->back()->with('users', $user);
     }
 
     public function DeleteUser($id){
 
         $user=User::find($id);
         $user->delete();
-        return redirect()->back();
+        $user = User::all();
+        return redirect()->back()->with('users', $user);
+    }
+
+    public function GetUserDetails($id) {
+
+        $user=User::find($id);
+
+        return view('update_user')->with('users', $user);
+    }
+
+    public function UpdateUser(Request $request){
+
+        $this->validate($request, [
+            'name' => 'required|max:150|min:5',
+            'address' => 'required|max:150|min:5',
+            'position' => 'required|max:100|min:1'
+
+        ]);
+
+        $id=$request->id;
+        $name=$request->name;
+        $address=$request->address;
+        $gender=$request->gender;
+        $position=$request->position;
+
+        $data=User::find($id);
+        $data->name=$name;
+        $data->address=$address;
+        $data->gender=$gender;
+        $data->position=$position;
+
+        $data->save();
+        $user=User::all();
+        return view('index')->with('users', $user);
+
     }
 }

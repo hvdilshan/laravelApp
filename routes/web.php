@@ -18,12 +18,19 @@ Route::get('/', function () {
     $data = App\Models\User::all();
     return view('index')->with('users', $data);
 });
+
 Route::get('/login', function () {
     return view('login');
 });
+
 Route::get('/user', function () {
     return view('user_management');
 });
+
 Route::post('/saveUser', [UserController::class, 'AddUser']);
 
 Route::get('/delete/{id}', [UserController::class, 'DeleteUser']);
+
+Route::get('/update/{id}', [UserController::class, 'GetUserDetails']);
+
+Route::post('/updateUser', [UserController::class, 'UpdateUser']);
