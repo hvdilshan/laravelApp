@@ -19,10 +19,6 @@ Route::get('/', function () {
     return view('index')->with('users', $data);
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-
 Route::get('/user', function () {
     return view('user_management');
 });
