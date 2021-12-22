@@ -25,8 +25,14 @@ class UserController extends Controller
         $user->position = $request->position;
         $user->save();
 
-        $data=User::all();
-        return view('index')->with('users', $data);
-        //return redirect()->back();
+        $data = User::all();
+        return redirect()->back()->with('users', $data);
+    }
+
+    public function DeleteUser($id){
+
+        $user=User::find($id);
+        $user->delete();
+        return redirect()->back();
     }
 }

@@ -46,9 +46,12 @@
                             <input type="text" class="form-control" name="position" placeholder="Enter the Position">
                         </div>
                         <div class="mb-3">
-                            <input type="submit" class="btn-primary" value="SAVE">
-                            <input type="button" class="btn-warning" value="CLEAR">
+                            <div class="d-grid gap-2 d-md-block" role="group" aria-label="Basic example">
+                                <button type="submit" class="btn btn-primary" style="width:75px">SAVE</button>
+                                <button type="button" class="btn btn-warning" style="width:75px">CLEAR</button>
+                            </div>
                         </div>
+
                     </form>
 
                     <table class="table table-dark table-hover">
@@ -66,6 +69,12 @@
                             <td>{{$user->address}}</td>
                             <td>{{$user->gender}}</td>
                             <td>{{$user->position}}</td>
+                            <td>
+                                <div class="btn-group gap-2 d-md-block " role="group" aria-label="Basic example">
+                                    <a href="/" type="button" class="btn btn-success" style="width:75px">Edit</a>
+                                    <a href="/delete/{{$user->id}}" type="button" class="btn btn-danger" style="width:75px">Delete</a>
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
                     </table>
