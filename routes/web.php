@@ -20,5 +20,5 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::get('/user', function () {
-    return view('user-management');
+    return view('user_management');
 });
