@@ -15,6 +15,11 @@
             <h1>User Management</h1>
             <div class="row">
                 <div class="col-md-12">
+                    @foreach($errors->all() as $error)
+                    <div class="alert alert-danger" role="alert">
+                        {{$error}}
+                    </div>
+                    @endforeach
                     <form method="post" action="/saveUser">
                         {{csrf_field()}}
                         <div class="mb-3">
@@ -53,6 +58,16 @@
                         <th>Gender</th>
                         <th>Position</th>
                         <th>Action</th>
+
+                        @foreach($users as $user)
+                        <tr>
+                            <td>{{$user->id}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->address}}</td>
+                            <td>{{$user->gender}}</td>
+                            <td>{{$user->position}}</td>
+                        </tr>
+                        @endforeach
                     </table>
 
                 </div>
